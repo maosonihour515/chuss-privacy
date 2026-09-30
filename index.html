@@ -34,6 +34,8 @@
 <li>Your settings stay on your phone. Your Shells, Shop items, daily streak, and puzzle stars are also saved on your phone — and if you're signed in, backed up to your account so they follow you to another phone.</li>
 <li>Online play and cloud backup need an account (a username and password — never a real email address). We store your username, chosen avatar, skill rating, and, while you're signed in, your game progress.</li>
 <li>While you're in a live online match, your moves are sent to the one other player you're matched with, in real time, so the match stays in sync. We don't keep this after the match ends.</li>
+<li>If the app hits an error, it sends us a short anonymous error report (what went wrong, app version, phone model, Android version, language) so we can fix it. Nothing identifies you.</li>
+<li>If you're signed in and clear the Daily Challenge, your display name and shot count appear on that day's public leaderboard.</li>
 <li>No ads, no analytics, no trackers, no data sold to anyone.</li>
 <li>You can change your display name and avatar any time in the Profile screen, and delete your account entirely, right there in the app (see "Your Rights &amp; Choices" below).</li>
 </ul>
@@ -50,10 +52,14 @@
 </ul>
 <h3>2.1a Game progress (only while signed in)</h3>
 <p>While you're signed in, your game progress is backed up to your account so it survives reinstalling and follows you to another phone: your Shells balance (as running totals of what each of your phones has earned and spent), the Shop items you've unlocked and equipped, your daily-reward streak, the last day you cleared the Daily Challenge, whether you've finished the tutorial, and your best stars on each puzzle level, plus a random ID for each phone so progress from several phones can be combined. This contains nothing about you beyond your play in CHUSS.</p>
+<h3>2.1b Daily Challenge leaderboard (only while signed in)</h3>
+<p>When you clear the Daily Challenge while signed in, we store the date, your account ID, and how many shots it took (your best that day). Other players can see that day's leaderboard, which shows your display name, avatar, and shot count.</p>
+<h3>2.1c Error reports</h3>
+<p>If the app runs into an error, it sends us a short report: the error message and where in the app's code it happened, the app version, your phone's model and Android version, and the app's language. Reports contain no account, name, location, or other personal information, and we use them only to find and fix bugs.</p>
 <h3>2.2 Live match data (Online mode only)</h3>
 <p>While an online match is in progress, your in-game actions (aim, shot power, position) are relayed in real time to the one opponent you're currently matched with, so both sides see the same match. This data is not written to any database and is not retained after the match ends.</p>
 <h3>2.3 What we do not collect</h3>
-<p>We do not collect or access: your real name, email address, phone number, precise or approximate location, contacts, camera, microphone, photos, advertising identifiers, or payment information. CHUSS has no in-app purchases and shows no ads. We use no analytics or crash-reporting SDKs.</p>
+<p>We do not collect or access: your real name, email address, phone number, precise or approximate location, contacts, camera, microphone, photos, advertising identifiers, or payment information. CHUSS has no in-app purchases and shows no ads. We use no third-party analytics or crash-reporting SDKs; the error reports in 2.1c go only to our own database.</p>
 <h3>2.4 Offline modes</h3>
 <p>Local, vs CPU, Practice, the tutorial, and the Daily Challenge run entirely on your device. No account is needed, and nothing about your play in these modes is sent to us or anyone else.</p>
 <h3>2.5 Data kept on your device</h3>
@@ -63,6 +69,8 @@
 <ul>
 <li>Let you sign in and keep your Online profile (username, avatar, rating) consistent across sessions.</li>
 <li>Back up your game progress and combine it across your phones, while you're signed in.</li>
+<li>Show the Daily Challenge leaderboard.</li>
+<li>Find and fix bugs, using anonymous error reports.</li>
 <li>Match you with an opponent and keep a live online match in sync.</li>
 <li>Calculate rating changes after an online match.</li>
 </ul>
@@ -70,19 +78,21 @@
 <h2>4. Who We Share It With</h2>
 <ul>
 <li><strong>Our backend provider (Supabase).</strong> Account and profile data is stored with Supabase, our database and authentication provider, acting as our data processor. Supabase's own privacy policy is available at <a href="https://supabase.com/privacy">supabase.com/privacy</a>.</li>
-<li><strong>The player you're matched with online.</strong> Your username, avatar, and rating are visible to whoever you're currently playing against in Online mode — that's how the game shows who you're facing.</li>
+<li><strong>The player you're matched with online.</strong> Your display name, avatar, and rating are visible to whoever you're currently playing against in Online mode — that's how the game shows who you're facing.</li>
+<li><strong>Other players, on the leaderboard.</strong> If you clear the Daily Challenge while signed in, your display name, avatar, and shot count are visible on that day's leaderboard.</li>
 <li>We do not share your information with advertisers, data brokers, or any other third party.</li>
 </ul>
 <h2>5. Data Retention</h2>
 <ul>
-<li>Account data (username, avatar, rating) and backed-up game progress are kept for as long as your account exists.</li>
+<li>Account data (username, avatar, rating), backed-up game progress, and leaderboard scores are kept for as long as your account exists.</li>
+<li>Error reports are kept for up to 90 days.</li>
 <li>Live match data is never persisted — it exists only for the duration of the match.</li>
 <li>If you delete your account (see below), your account data is permanently removed.</li>
 </ul>
 <h2>6. Your Rights &amp; Choices</h2>
 <ul>
 <li><strong>Update your profile.</strong> Change your display name and avatar any time from the Profile screen.</li>
-<li id="delete"><strong>Delete your account.</strong> Open Profile → Delete Account, and confirm. This immediately and permanently deletes your account and all associated data (username, avatar, rating, and backed-up game progress), and resets the game progress saved on that phone — there is no waiting period, and it cannot be undone. You can also email <a href="mailto:maosonihour.mail@gmail.com">maosonihour.mail@gmail.com</a> if you'd rather we do it for you.</li>
+<li id="delete"><strong>Delete your account.</strong> Open Profile → Delete Account, and confirm. This immediately and permanently deletes your account and all associated data (username, avatar, rating, backed-up game progress, and leaderboard scores), and resets the game progress saved on that phone — there is no waiting period, and it cannot be undone. You can also email <a href="mailto:maosonihour.mail@gmail.com">maosonihour.mail@gmail.com</a> if you'd rather we do it for you.</li>
 <li><strong>Access or export your data.</strong> Email us at <a href="mailto:maosonihour.mail@gmail.com">maosonihour.mail@gmail.com</a> and we'll provide a copy of the account data we hold about you.</li>
 </ul>
 <p>These rights apply regardless of where you live; if you're in the EU/UK, EEA, or California, you may also have additional rights (such as data portability) under GDPR or CCPA — contact us and we'll accommodate applicable requests.</p>
