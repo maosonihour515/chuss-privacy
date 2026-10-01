@@ -35,7 +35,7 @@
 <li>Online play and cloud backup need an account (a username and password — never a real email address). We store your username, chosen avatar, skill rating, and, while you're signed in, your game progress.</li>
 <li>While you're in a live online match, your moves are sent to the other players in that match (up to four), in real time, so the match stays in sync. We don't keep this after the match ends.</li>
 <li>When you use Quick Match, we briefly note which room you're waiting in, so other players can join you. It's deleted as soon as your match starts or you stop searching.</li>
-<li>On the Online screen, the app shares an anonymous "I'm here" signal so everyone can see how many players are online. It carries nothing about you and isn't stored.</li>
+<li>On the Online screen, the app checks in anonymously every 30 seconds so everyone can see how many players are online. It carries nothing about you, and each check-in is deleted within about two minutes.</li>
 <li>If the app hits an error, it sends us a short anonymous error report (what went wrong, app version, phone model, Android version, language) so we can fix it. Nothing identifies you.</li>
 <li>If you're signed in and clear the Daily Challenge, your display name and shot count appear on that day's public leaderboard.</li>
 <li>No ads, no analytics, no trackers, no data sold to anyone.</li>
@@ -65,7 +65,7 @@
 <h3>2.2 Live match data (Online mode only)</h3>
 <p>While an online match is in progress, your in-game actions (aim, shot power, position) and any quick reactions (emotes) you tap are relayed in real time to the other players in that match (up to four), so everyone sees the same match. This data is not written to any database and is not retained after the match ends.</p>
 <h3>2.2a Players-online count</h3>
-<p>While you're on the Online screen or in an online room, the app shares an anonymous presence signal — a random ID made fresh each time, and which rules you're searching with, if any — so every player can see how many people are online and searching. It contains no account, name, or device information, and it isn't stored anywhere; it disappears when you leave the Online screen.</p>
+<p>While you're on the Online screen or in an online room, the app checks in with our server every 30 seconds: a random ID made fresh each time you open the Online screen, and which rules you're searching with, if any. That's how every player can see how many people are online and searching. It contains no account, name, or device information; a check-in stops counting after 75 seconds and is deleted within about two minutes, and leaving the Online screen deletes yours straight away.</p>
 <h3>2.3 What we do not collect</h3>
 <p>We do not collect or access: your real name, email address, phone number, precise or approximate location, contacts, camera, microphone, photos, advertising identifiers, or payment information. CHUSS has no in-app purchases and shows no ads. We use no third-party analytics or crash-reporting SDKs; the error reports in 2.1c go only to our own database.</p>
 <h3>2.4 Offline modes</h3>
@@ -94,7 +94,7 @@
 <ul>
 <li>Account data (username, avatar, rating), backed-up game progress, and leaderboard scores are kept for as long as your account exists.</li>
 <li>Error reports are kept for up to 90 days.</li>
-<li>Live match data and the players-online signal are never persisted — they exist only while you're online.</li>
+<li>Live match data is never persisted — it exists only while you're online. Players-online check-ins are deleted within about two minutes.</li>
 <li>Quick Match records are deleted when your match starts or you stop searching, and within a few minutes at most.</li>
 <li>Online match records (accounts, rules, ratings at the start, and the reported result) are deleted 7 days after the match.</li>
 <li>If you delete your account (see below), your account data is permanently removed.</li>
