@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play CHUSS</title>
+<meta name="description" content="CHUSS, the Cambodian sandal-kicking street game. Join a friend's room or get it on Google Play.">
+<meta property="og:title" content="Play CHUSS with me!">
+<meta property="og:description" content="The Cambodian sandal-kicking street game. Tap to join.">
+<meta property="og:image" content="https://maosonihour515.github.io/chuss-privacy/join/icon.png">
+<link rel="icon" href="icon.png">
+<!--
+  Invite page for CHUSS (source: chuss-production/docs/join/index.html,
+  published in the chuss-privacy repo). ?r=ABCDE is a friend room: the
+  button opens CHUSS in that room, or Google Play when CHUSS isn't
+  installed. Without ?r it's just a "get CHUSS" page (Daily Challenge shares).
+  No cookies, no analytics, nothing sent anywhere.
+-->
+<style>
+  :root { --night: #150b2e; --violet: #2a1850; --gold: #fcd34d; --orange: #fb923c; --on-gold: #3b1a06; --text: #f6f1ff; --muted: #c9bfe0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0%, var(--violet), var(--night) 70%);
+         color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Khmer", sans-serif;
+         display: flex; align-items: center; justify-content: center; }
+  main { width: 100%; max-width: 420px; padding: 32px 16px 48px; text-align: center; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+  h1 { font-size: 26px; margin: 18px 0 2px; }
+  .km { color: var(--muted); margin: 0; }
+  .code { display: inline-block; margin: 18px 0 6px; padding: 8px 18px; border-radius: 14px; background: rgba(255,255,255,.08);
+          border: 2px dashed var(--gold); color: var(--gold); font: 700 34px/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 6px; }
+  .btn { display: block; width: 100%; margin: 14px 0 0; padding: 15px 18px; border-radius: 999px; font-weight: 700; font-size: 18px;
+         text-decoration: none; text-align: center; }
+  .btn small { display: block; font-weight: 500; font-size: 14px; opacity: .85; }
+  .primary { background: linear-gradient(180deg, var(--gold), var(--orange)); color: var(--on-gold); box-shadow: 0 4px 0 #c2410c; }
+  .secondary { border: 2px solid var(--gold); color: var(--gold); }
+  .hint { color: var(--muted); font-size: 14px; margin-top: 22px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icon.png" alt="CHUSS">
+  <div id="invite" class="hidden">
+    <h1>You're invited to play CHUSS!</h1>
+    <p class="km" lang="km">អ្នកត្រូវបានអញ្ជើញឲ្យលេង CHUSS!</p>
+    <div class="code" id="code"></div>
+    <a class="btn primary" id="openBtn" href="#">Open in CHUSS<small lang="km">បើកក្នុង CHUSS</small></a>
+    <a class="btn secondary" id="playBtn2" href="#">Get CHUSS on Google Play<small lang="km">ទាញយក CHUSS ពី Google Play</small></a>
+    <p class="hint">Just installed it? Come back here and tap <b>Open in CHUSS</b>, or open CHUSS → Online, type the code and tap Join.</p>
+    <p class="hint" lang="km">ទើបតែដំឡើងរួច? ត្រឡប់មកទីនេះ ហើយចុច <b>បើកក្នុង CHUSS</b> ឬបើក CHUSS → អនឡាញ វាយលេខកូដ ហើយចុច ចូល។</p>
+  </div>
+  <div id="get" class="hidden">
+    <h1>CHUSS</h1>
+    <p>The Cambodian sandal-kicking street game, now in your pocket.</p>
+    <p class="km" lang="km">ល្បែងតាមភូមិរបស់ខ្មែរ ឥឡូវនៅក្នុងហោប៉ៅរបស់អ្នក។</p>
+    <a class="btn primary" id="playBtn" href="#">Get CHUSS on Google Play<small lang="km">ទាញយក CHUSS ពី Google Play</small></a>
+  </div>
+</main>
+<script>
+  // Same rules as src/net/invite.ts.
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.chuss.game';
+  var code = (new URLSearchParams(location.search).get('r') || '').toUpperCase();
+  var valid = /^[A-HJ-NP-Z2-9]{5}$/.test(code);
+  document.getElementById('playBtn').href = PLAY;
+  document.getElementById('playBtn2').href = PLAY;
+  if (valid) {
+    document.getElementById('invite').classList.remove('hidden');
+    document.getElementById('code').textContent = code;
+    var android = /Android/i.test(navigator.userAgent);
+    // On Android, an intent link opens CHUSS if it's installed, or Google Play if not.
+    document.getElementById('openBtn').href = android
+      ? 'intent://join/' + code + '#Intent;scheme=chuss;package=com.chuss.game;S.browser_fallback_url=' + encodeURIComponent(PLAY) + ';end'
+      : 'chuss://join/' + code;
+  } else {
+    document.getElementById('get').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>
